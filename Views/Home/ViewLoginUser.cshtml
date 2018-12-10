@@ -1,0 +1,17 @@
+@using BankAccounts.Models
+@model LoginUser
+
+<h1 class="LoginHeader">Login to this Cool site!</h1>
+<a class="login" href="/">Register</a>
+
+<form asp-action="LoginUser" asp-controller="Home" method="post">
+  <label for="Email">Email</label>
+  <input asp-for="Email">
+  <span asp-validation-for="Email"></span>
+
+  <label for="Password">Password</label>
+  <input asp-for="Password">
+  <span asp-validation-for="Password"></span>
+
+  <input type="submit" class="btn btn-primary" value="Sign Up Now">
+</form>

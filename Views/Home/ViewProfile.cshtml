@@ -1,0 +1,29 @@
+@using BankAccounts.Models
+@model Transaction
+
+<h1 class="welcome">Welcome @ViewBag.LoggedInUser.FirstName</h1>
+
+<span>Current balance: <span>@ViewBag.LoggedInUser.Balance</span></span>
+
+
+<form asp-action="PostTransaction" method="post" asp-controller="Home">
+  <input asp-for="Amount">
+  <input asp-for="UserId" type = "hidden" value="@ViewBag.LoggedInUser.UserId">
+  <input type = "submit" value="Submit" class="btn btn-primary">
+</form>
+
+<table>
+  <tr>
+    <th>Amount</th>
+    <th>Date</th>
+  </tr>
+@{
+  foreach(var t in ViewBag.AllTransactionsByUser)
+  {
+    <tr>
+      <td>@t.Amount</td>
+      <td>@t.CreatedAt</td>
+    </tr>
+  }
+}
+</table>
